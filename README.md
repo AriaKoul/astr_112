@@ -1,5 +1,5 @@
 # astr_112
-Projects I did in ASTR 112 - Physics of Stars
 
+This repository contains all the code for the assignments I did for ASTR 112, Physics of Stars, which is an upper division class at UCSC.
 
-This repository includes all the code I did for the projects I did for my Physics of Stars class at UCSC.
+Most of the work in this repository is analyzing the Gaia Catalog, which is a catalog that contains characteristics, such as distance, luminosities, and location, of more than a billion stars in the night sky.
