@@ -19,7 +19,7 @@ from astroquery.gaia import Gaia
 
 # Getting the data
 query_result = pd.read_csv('M67_results.csv')
-print(query_result)
+
 
 # Removing the rows that have an invalid luminosity value
 query_result_filtered = query_result.dropna(subset=['lum_val'])
