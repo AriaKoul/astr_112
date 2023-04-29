@@ -4,7 +4,7 @@ DESCRIPTION:
 
 """
 
-# Imports
+### IMPORTS
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd 
@@ -17,9 +17,12 @@ from astroquery.gaia import Gaia
 from astropy.coordinates import SkyCoord
 from astroquery.gaia import Gaia
 
-# Getting the data
-query_result = pd.read_csv('M67_results.csv')
+### GETTING THE DATA FROM GAIA
+query_result = pd.read_csv('M67_results.csv') # Outputted 5546 stars 
+
+# Some rows had invalid effective temperature values and others had invalid AG
+# extinction values
 
 
-# Removing the rows that have an invalid luminosity value
-query_result_filtered = query_result.dropna(subset=['lum_val'])
+
+
