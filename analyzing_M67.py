@@ -45,7 +45,9 @@ query_result = query_result[(query_result['parallax'] >= 1.10) & (query_result['
 # Some rows had invalid BP - RP values. Below, I filtered the data to get only the
 # stars with valid BP - RP values.
 query_result_filtered = query_result.dropna(subset=['bp_rp'])
-print(query_result_filtered)
+
+# After both filters, there were 855 stars left in the data set
+
 
 
 
