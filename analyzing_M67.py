@@ -1,6 +1,27 @@
 """
 DESCRIPTION:
+In this assignment, we are analyzing the M67 cluster, which is a nearby open cluster
+in the Cancer constellation. From the Gaia DR2 catalog, we used specified parameters to 
+get data on a bunch of stars.
 
+Below are the parameters we used to gather stars from the entire night sky. Each 
+parameter is similar to a property we know about the M67 cluster, so the stars we 
+gathered are all either in M67 or near it:
+    - Radius of roughly 40 arcminutes (so the star is in the spatial extent of M67)
+    - Coordinates (approximately): RA = 132.82, DEC = 11.82 (so the star is in the direction
+        of M67)
+    - Within a distance of less than 2000 parsecs
+
+Below are the outputs we needed for each star to analyze the data:
+    - Source ID
+    - Parallax
+    - Mean G Magnitude
+    - BP-RP Color
+
+After finding the data using the Gaia Website, I downloaded it as a csv file to use in my 
+code. With the data, I made a histogram of the parallaxes. This helped me find the 
+approximate parallax of the stars in M67. I also made a Color Magnitude Diagram to 
+represent the stars that are in M67. 
 
 """
 
@@ -34,7 +55,7 @@ plt.show()
 
 
 
-### ADJUSTING THE DATA ###
+### FILTERING THE DATA ###
 
 # In making a Color Magnitude Diagram, we only want the stars that have a parallax
 # value within the range found in the histogram. That is, we want stars that have
