@@ -12,4 +12,4 @@ import pandas as pd
 
 
 ### GETTING THE DATA FROM GAIA ###
-# query_result = pd.read_csv('M67_data.csv') # Outputted stars 
+# query_result = pd.read_csv('praesepe_data.csv') # Outputted stars 
