@@ -96,12 +96,26 @@ plt.show()
 RA = query_result['ra']
 DEC = query_result['dec']
 
-fig, ax = plt.subplots(figsize=(5,5), dpi=100)
-ax.scatter(DEC, RA, s = 0.3)
+# fig, ax = plt.subplots(figsize=(5,5), dpi=100)
+# ax.scatter(DEC, RA, s = 0.3)
 
-ax.set_ylabel('Right Ascension')
-ax.set_xlabel('Declination')
+# ax.set_ylabel('Right Ascension')
+# ax.set_xlabel('Declination')
 
-plt.title('Right Ascension vs. Declination')
+# plt.title('Right Ascension vs. Declination')
+
+# plt.show()
+
+col = []
+
+for i in range(0, len(query_result)):
+    if (query_result['parallax'] >= 5.28 & query_result['parallax'] <= 5.64 & query_result['pmdec'] >= -18.0 & 
+        query_result['pmdec'] <= -7.5 & query_result['pmra'] >= -45.5 & query_result['pmra'] <= -27.0):
+        col.append('red')
+    else:
+        col.append('blue')
+
+for i in range(len(query_result)):
+    plt.scatter(RA, DEC, c = col[i], s = 0.3)
 
 plt.show()
