@@ -14,7 +14,7 @@ import pandas as pd
 ### GETTING THE DATA FROM GAIA ###
 query_result = pd.read_csv('praesepe_data.csv') # Outputted 141627 stars (using radius = 4 degrees, parallax >= 0.5)
 
-
+'''
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
 parallax_signal = query_result['parallax']
 max_parallax = np.max(parallax_signal) # determines what the largest parallax value is in order to define the bins
@@ -25,7 +25,7 @@ bins = np.arange(0, 8, 0.05)
 plt.hist(parallax_signal,bins)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
-plt.title('Parallax Histogram')
+plt.title('Parallax Histogram for the Praesepe Cluster')
 plt.show()
 
 # # Below is the code for the parallax histogram zoomed into the parallaxes that the Praesepe Cluster might correspond to
@@ -33,10 +33,10 @@ bins_zoomed = np.arange(5, 6, 0.02) # arrangement for zoomed in histogram
 plt.hist(parallax_signal,bins_zoomed)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
-plt.title('Zoomed in Parallax Histogram (between 5 and 6 mas)')
+plt.title('Zoomed in Parallax Histogram for the Praesepe Cluster (between 5 and 6 mas)')
 plt.show()
 # Peak of the histogram had a width from 5.28 mas to 5.54 mas: this peak was 13 bins across
-
+'''
 
 
 ### FILTERING THE DATA FOR PARALLAX ###
@@ -87,7 +87,7 @@ plt.title("Proper Motion in RA vs. Proper Motion in DEC (zoomed in)")
 plt.show()
 
 
-
+'''
 ### PLOTTING RA vs. DEC FOR INITIAL QUERY (UNFILTERED DATA) ###
 
 condition = ((query_result['parallax'].between(5.28, 5.64)) & (query_result['pmdec'].between(-18.0, -7.5)) 
@@ -104,14 +104,13 @@ ax.set_xlabel('Declination')
 plt.title('Right Ascension vs. Declination')
 plt.legend()
 plt.show()
-
-
+'''
 
 ### FILTERING THE DATA FOR RA AND DEC ### 
 
-query_result_filtered_3 = query_result_filtered[(query_result_filtered['dec'] >= 18.0) & (query_result_filtered['dec'] <= 21.5)
-                                                & (query_result_filtered['ra'] >= 128.0) & (query_result_filtered['ra'] <= 132.0)]
-
+query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 18.0) & (query_result_filtered_2['dec'] <= 21.5)
+                                                & (query_result_filtered_2['ra'] >= 128.0) & (query_result_filtered_2['ra'] <= 132.0)]
+print(query_result_filtered_3)
 
 ### PLOTTING COLOR MAGNITUDE DIAGRAM ###
 
