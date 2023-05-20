@@ -106,11 +106,17 @@ DEC = query_result['dec']
 
 # plt.show()
 
+parallax = query_result['parallax']
+
+
+# df = query_result
 col = []
 
+# data_frame = (df[(df['parallax'] >= 5.28) & (df['parallax'] <= 5.64) & (df['pmdec'] >= -18.0) & 
+#         (df['pmdec'] <= -7.5) & (df['pmra'] >= -45.5) & (df['pmra'] <= -27.0)])
+
 for i in range(0, len(query_result)):
-    if (query_result['parallax'] >= 5.28 & query_result['parallax'] <= 5.64 & query_result['pmdec'] >= -18.0 & 
-        query_result['pmdec'] <= -7.5 & query_result['pmra'] >= -45.5 & query_result['pmra'] <= -27.0):
+    if ((parallax[i] >= 5.28) & (parallax[i] <= 5.64)):
         col.append('red')
     else:
         col.append('blue')
