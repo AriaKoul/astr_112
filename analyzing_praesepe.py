@@ -44,9 +44,7 @@ plt.show()
 # We want to filter the stars so that the only stars left in our data set are those that correspond to
 # the parallax range we found. So, we want stars that have a parallax between 5.28 mas and 5.54 mas.
 query_result_filtered = query_result[(query_result['parallax'] >= 5.28) & (query_result['parallax'] <= 5.64)]
-
-# From 5.24 to 5.54: 1041 stars
-# From 5.28 to 5.64: 1105 stars
+# After filtering the data for parallaxes, the remaining data was only 1105 stars. 
 
 
 '''
@@ -93,35 +91,19 @@ plt.show()
 
 ### PLOTTING RA vs. DEC FOR INITIAL QUERY (UNFILTERED) ###
 
-RA = query_result['ra']
-DEC = query_result['dec']
-
-# fig, ax = plt.subplots(figsize=(5,5), dpi=100)
-# ax.scatter(DEC, RA, s = 0.3)
-
-# ax.set_ylabel('Right Ascension')
-# ax.set_xlabel('Declination')
-
-# plt.title('Right Ascension vs. Declination')
-
-# plt.show()
-
-parallax = query_result['parallax']
+condition = ((query_result['parallax'].between(5.28, 5.64)) & (query_result['pmdec'].between(-18.0, -7.5)) 
+             & (query_result['pmra'].between(-45.5, -27.0)))
+selected_points = query_result[condition]
 
 
-# df = query_result
-col = []
+fig, ax = plt.subplots(figsize=(5,5), dpi=100)
+ax.scatter(query_result['dec'], query_result['ra'], s = 0.3, color = 'blue', label = 'All points')
+ax.scatter(selected_points['dec'], selected_points['ra'], s = 0.3, color = 'red', label = 'Selected Points')
 
-# data_frame = (df[(df['parallax'] >= 5.28) & (df['parallax'] <= 5.64) & (df['pmdec'] >= -18.0) & 
-#         (df['pmdec'] <= -7.5) & (df['pmra'] >= -45.5) & (df['pmra'] <= -27.0)])
-
-for i in range(0, len(query_result)):
-    if ((parallax[i] >= 5.28) & (parallax[i] <= 5.64)):
-        col.append('red')
-    else:
-        col.append('blue')
-
-for i in range(len(query_result)):
-    plt.scatter(RA, DEC, c = col[i], s = 0.3)
-
+ax.set_ylabel('Right Ascension')
+ax.set_xlabel('Declination')
+plt.title('Right Ascension vs. Declination')
+plt.legend()
 plt.show()
+
+
