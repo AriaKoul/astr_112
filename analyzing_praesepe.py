@@ -14,7 +14,7 @@ import pandas as pd
 ### GETTING THE DATA FROM GAIA ###
 query_result = pd.read_csv('praesepe_data.csv') # Outputted 141627 stars (using radius = 4 degrees, parallax >= 0.5)
 
-'''
+
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
 parallax_signal = query_result['parallax']
 max_parallax = np.max(parallax_signal) # determines what the largest parallax value is in order to define the bins
@@ -36,7 +36,7 @@ plt.ylabel('Stars')
 plt.title('Zoomed in Parallax Histogram for the Praesepe Cluster (between 5 and 6 mas)')
 plt.show()
 # Peak of the histogram had a width from 5.28 mas to 5.54 mas: this peak was 13 bins across
-'''
+
 
 
 ### FILTERING THE DATA FOR PARALLAX ###
@@ -56,8 +56,8 @@ fig, ax = plt.subplots(figsize=(6,6), dpi=100)
 
 ax.scatter(pm_DEC,pm_RA, s=0.3)
 
-ax.set_ylabel('Proper Motion in Right Ascension (RA)')
-ax.set_xlabel('Proper Motion in Declination (DEC)')
+ax.set_ylabel('Proper Motion in Right Ascension, RA (mas/yr)')
+ax.set_xlabel('Proper Motion in Declination, DEC (mas/yr)')
 
 plt.title('Proper Motion in RA vs. Proper Motion in DEC')
 
@@ -79,15 +79,15 @@ fig, ax = plt.subplots(figsize=(5,5), dpi=100)
 
 ax.scatter(pm_DEC_filtered,pm_RA_filtered, s=0.3)
 
-ax.set_ylabel('Proper Motion in Right Ascension (RA)')
-ax.set_xlabel('Proper Motion in Declination (DEC)')
+ax.set_ylabel('Proper Motion in Right Ascension, RA (mas/yr)')
+ax.set_xlabel('Proper Motion in Declination, DEC (mas/yr)')
 
 plt.title("Proper Motion in RA vs. Proper Motion in DEC (zoomed in)")
 
 plt.show()
 
 
-'''
+
 ### PLOTTING RA vs. DEC FOR INITIAL QUERY (UNFILTERED DATA) ###
 
 condition = ((query_result['parallax'].between(5.28, 5.64)) & (query_result['pmdec'].between(-18.0, -7.5)) 
@@ -96,21 +96,22 @@ selected_points = query_result[condition]
 
 
 fig, ax = plt.subplots(figsize=(5,5), dpi=100)
-ax.scatter(query_result['dec'], query_result['ra'], s = 0.3, color = 'blue', label = 'All points')
-ax.scatter(selected_points['dec'], selected_points['ra'], s = 0.4, color = 'red', label = 'Selected Points')
+ax.scatter(query_result['dec'], query_result['ra'], s = 0.3, color = 'blue', label = 'All stars')
+ax.scatter(selected_points['dec'], selected_points['ra'], s = 0.4, color = 'red', label = 'Selected stars')
 
-ax.set_ylabel('Right Ascension')
-ax.set_xlabel('Declination')
+ax.set_ylabel('Right Ascension (degrees)')
+ax.set_xlabel('Declination (degrees)')
 plt.title('Right Ascension vs. Declination')
 plt.legend()
 plt.show()
-'''
+
 
 ### FILTERING THE DATA FOR RA AND DEC ### 
 
 query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 18.0) & (query_result_filtered_2['dec'] <= 21.5)
                                                 & (query_result_filtered_2['ra'] >= 128.0) & (query_result_filtered_2['ra'] <= 132.0)]
-print(query_result_filtered_3)
+# 534 stars were left after filtering all the data 
+
 
 ### PLOTTING COLOR MAGNITUDE DIAGRAM ###
 
