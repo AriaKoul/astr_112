@@ -29,13 +29,13 @@ plt.title('Parallax Histogram for the Praesepe Cluster')
 plt.show()
 
 # # Below is the code for the parallax histogram zoomed into the parallaxes that the Praesepe Cluster might correspond to
-bins_zoomed = np.arange(5, 6, 0.02) # arrangement for zoomed in histogram
+bins_zoomed = np.arange(5, 6, 0.02) 
 plt.hist(parallax_signal,bins_zoomed)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
 plt.title('Zoomed in Parallax Histogram for the Praesepe Cluster (between 5 and 6 mas)')
 plt.show()
-# Peak of the histogram had a width from 5.28 mas to 5.54 mas: this peak was 13 bins across
+# Peak of the histogram had a width from 5.28 mas to 5.64 mas: this peak was 18 bins across
 
 
 
@@ -140,6 +140,3 @@ ax.set_xlabel('B-R color [Gaia Bp & Rp bands]')
 plt.title('Color Magnitude Diagram of Stars in the Praesepe Cluster')
 
 plt.show()
-
-
-
