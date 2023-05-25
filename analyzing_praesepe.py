@@ -1,6 +1,34 @@
 """
 DESCRIPTION:
- 
+In this assignment, I am analyzing the M44 (aka Praesepe Cluster, aka Beehive Cluster)
+in the Cancer constellation. From the Gaia DR2 catalog, I used specific parameters to
+get data on a bunch of stars.
+
+Below are the parameters I used to gather stars from the entire night sky. I knew that the Praesepe
+Cluster takes up a large portion of the night sky so I made my radius larger than usual. Also,
+I knew that Praesepe is a nearby cluster, so its parallax value would have than about 
+0.5 milliarcseconds (mas). Here are the parameters:
+    - Radius = 4 degrees
+    - Parallax >= 0.5 mas (which corresponds to a distance, d less than 2000 parsecs)
+
+Below are the outputs I needed for each star to analyze the data.
+    - Source ID
+    - Parallax
+    - Right Ascension (RA)
+    - Declination (DEC)
+    - Proper Motion in RA (pmra)
+    - Proper Motion in DEC (pmdec)
+    - Mean G Magnitude
+    - BP-RP Color 
+
+After finding the data using the Gaia website, I downloaded it as a csv file to use in my code.
+With the data, I first made a histogram of the parallaxes. This helped me find the approximate range
+of parallaxes for the stars in M67, and thus the approximate distance range for the whole cluster.
+Then, I found the approximate ranges for the RA, DEC, pmra, and pmdec for all the stars in the cluster.
+This helped me filter the stars in the initial Gaia query so that, in the end, the only stars remaining
+in the data set were those from the Praesepe Cluster. At the end of this assignment, I made a Color
+Magnitude Diagram to represent the stars in the cluster. 
+
 
 """
 
