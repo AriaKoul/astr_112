@@ -20,8 +20,8 @@ Below are the outputs we needed for each star to analyze the data:
 
 After finding the data using the Gaia Website, I downloaded it as a csv file to use in my 
 code. With the data, I made a histogram of the parallaxes. This helped me find the 
-approximate parallax of the stars in M67. I also made a Color Magnitude Diagram to 
-represent the stars that are in M67. 
+approximate parallax, and thus the approximate distances, of the stars in M67. I also made a 
+Color Magnitude Diagram to represent the stars that are in M67. 
 
 """
 
