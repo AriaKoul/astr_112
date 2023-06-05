@@ -66,7 +66,7 @@ plt.show()
 query_result_filtered_2 = query_result_filtered[(query_result_filtered['pmdec'] >= -34.5) & (query_result_filtered['pmdec'] <= -18.8)
                                                 & (query_result_filtered['pmra'] >= -5.7) & (query_result_filtered['pmra'] <= 5.7)]
 
-
+print(query_result_filtered_2)
 
 pm_RA_filtered = query_result_filtered_2['pmra']
 pm_DEC_filtered = query_result_filtered_2['pmdec']
@@ -102,7 +102,7 @@ plt.legend()
 plt.show()
 
 
-'''
+
 ### FILTERING THE DATA FOR RA AND DEC ### 
 
 query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 84.78) & (query_result_filtered_2['dec'] <= 85.8)
@@ -112,11 +112,11 @@ query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'
 ### PLOTTING COLOR MAGNITUDE DIAGRAM ###
 
 # Pull out the color & magnitude values from Gaia
-app_Gmag = query_result_filtered_3['phot_g_mean_mag']
-bp_rp = query_result_filtered_3['bp_rp']
+app_Gmag = query_result_filtered_2['phot_g_mean_mag']
+bp_rp = query_result_filtered_2['bp_rp']
 
 # Calculating distance from parallax 
-parallax_Signal = query_result_filtered_3['parallax']
+parallax_Signal = query_result_filtered_2['parallax']
 parallax_in_arcsec = parallax_Signal/1000 #convert from milliarcseconds to arcseconds
 d = 1/parallax_in_arcsec
 
@@ -137,7 +137,6 @@ plt.title('Color Magnitude Diagram of Stars')
 
 plt.show()
                                                                         
-# query_result_filtered_3.to_csv('NGC188_filtered.csv', index=False)
+query_result_filtered_3.to_csv('NGC6774_filtered.csv', index=False)
 
 
-'''
