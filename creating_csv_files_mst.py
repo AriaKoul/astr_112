@@ -7,7 +7,7 @@ import pandas as pd
 
 
 ### GETTING THE DATA FROM GAIA ###
-query_result = pd.read_csv('alpha_per_data.csv') # Outputted 141627 stars (using radius = 4 degrees, parallax >= 0.5)
+query_result = pd.read_csv('NGC188_data.csv') # Outputted 141627 stars (using radius = 4 degrees, parallax >= 0.5)
 
 
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
@@ -24,7 +24,7 @@ plt.title('Parallax Histogram')
 plt.show()
 
 # # Below is the code for the parallax histogram zoomed into the parallaxes that the Praesepe Cluster might correspond to
-bins_zoomed = np.arange(5, 6, 0.02) 
+bins_zoomed = np.arange(0.5, 0.7, 0.002) 
 plt.hist(parallax_signal,bins_zoomed)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
@@ -33,7 +33,7 @@ plt.show()
 # Peak of the histogram had a width from 5.28 mas to 5.64 mas: this peak was 18 bins across
 
 
-
+'''
 ### FILTERING THE DATA FOR PARALLAX ###
 
 # We want to filter the stars so that the only stars left in our data set are those that correspond to
@@ -135,6 +135,8 @@ ax.set_xlabel('B-R color [Gaia Bp & Rp bands]')
 plt.title('Color Magnitude Diagram of Stars')
 
 plt.show()
-                                             
-                                        
-# query_result_filtered_3.to_csv('M44_filtered.csv', index=False)
+                                                                        
+# query_result_filtered_3.to_csv('alpha_per_filtered.csv', index=False)
+
+
+'''
