@@ -12,6 +12,7 @@ import pandas as pd
 # I filtered the data and created the following csv files, so that the color magnitude diagram at 
 # the end of part (a) was less chaotic and more clear. 
 
+'''
 csv_files = ['alpha_per_filtered.csv', 'NGC188_filtered.csv', 'NGC6774_filtered.csv', 'M44_filtered.csv']
 
 def color_magnitude_diagram(csv_files):
@@ -51,8 +52,14 @@ def color_magnitude_diagram(csv_files):
     plt.show()
 
 print(color_magnitude_diagram(csv_files))
+'''
 
+file_path = "iso.txt"
 
+# Read the text file using Pandas
+isochrones = pd.read_csv(file_path, delimiter='\t')  # Use appropriate delimiter if not comma-separated
+
+print(isochrones)
 
 
 
