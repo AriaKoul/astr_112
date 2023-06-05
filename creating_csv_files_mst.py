@@ -137,6 +137,6 @@ plt.title('Color Magnitude Diagram of Stars')
 
 plt.show()
                                                                         
-query_result_filtered_3.to_csv('NGC6774_filtered.csv', index=False)
+query_result_filtered_2.to_csv('NGC6774_filtered.csv', index=False)
 
 
