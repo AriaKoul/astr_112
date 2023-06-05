@@ -7,7 +7,8 @@ import pandas as pd
 
 
 ### GETTING THE DATA FROM GAIA ###
-query_result = pd.read_csv('NGC188_data.csv') # Outputted 141627 stars (using radius = 4 degrees, parallax >= 0.5)
+query_result = pd.read_csv('NGC6774_data.csv') # Outputted 2169 stars (using radius = 4 degrees, parallax >= 0.5)
+
 
 
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
@@ -24,7 +25,7 @@ plt.title('Parallax Histogram')
 plt.show()
 
 # # Below is the code for the parallax histogram zoomed into the parallaxes that the Praesepe Cluster might correspond to
-bins_zoomed = np.arange(0.4, 0.7, 0.002) 
+bins_zoomed = np.arange(3, 4, 0.02) 
 plt.hist(parallax_signal,bins_zoomed)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
@@ -38,7 +39,7 @@ plt.show()
 
 # We want to filter the stars so that the only stars left in our data set are those that correspond to
 # the parallax range we found. So, we want stars that have a parallax between 5.28 mas and 5.54 mas.
-query_result_filtered = query_result[(query_result['parallax'] >= 0.5) & (query_result['parallax'] <= 0.67)]
+query_result_filtered = query_result[(query_result['parallax'] >= 3.20) & (query_result['parallax'] <= 3.52)]
 # After filtering the data for parallaxes, the remaining data was only 1105 stars. 
 
 
@@ -62,8 +63,8 @@ plt.show()
 
 ### FILTERING THE DATA FOR PROPER MOTION AND PLOTTING PROPER MOTION AGAIN ###
 
-query_result_filtered_2 = query_result_filtered[(query_result_filtered['pmdec'] >= -1.68) & (query_result_filtered['pmdec'] <= -0.33)
-                                                & (query_result_filtered['pmra'] >= -2.99) & (query_result_filtered['pmra'] <= -1.30)]
+query_result_filtered_2 = query_result_filtered[(query_result_filtered['pmdec'] >= -34.5) & (query_result_filtered['pmdec'] <= -18.8)
+                                                & (query_result_filtered['pmra'] >= -5.7) & (query_result_filtered['pmra'] <= 5.7)]
 
 
 
@@ -85,13 +86,13 @@ plt.show()
 
 ### PLOTTING RA vs. DEC FOR INITIAL QUERY (UNFILTERED DATA) ###
 
-condition = ((query_result['parallax'].between(0.50, 0.67)) & (query_result['pmdec'].between(-1.68, -0.33)) 
-             & (query_result['pmra'].between(-2.99, -1.30)))
+condition = ((query_result['parallax'].between(0.50, 0.67)) & (query_result['pmdec'].between(-34.5, -18.8)) 
+             & (query_result['pmra'].between(-5.7, 5.7)))
 selected_points = query_result[condition]
 
 
 fig, ax = plt.subplots(figsize=(5,5), dpi=100)
-ax.scatter(query_result['dec'], query_result['ra'], s = 0.3, color = 'blue', label = 'All stars')
+ax.scatter(query_result['dec'], query_result['ra'], s = 0.1, color = 'blue', label = 'All stars')
 ax.scatter(selected_points['dec'], selected_points['ra'], s = 0.4, color = 'red', label = 'Selected stars')
 
 ax.set_ylabel('Right Ascension (degrees)')
@@ -101,7 +102,7 @@ plt.legend()
 plt.show()
 
 
-
+'''
 ### FILTERING THE DATA FOR RA AND DEC ### 
 
 query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 84.78) & (query_result_filtered_2['dec'] <= 85.8)
@@ -136,6 +137,7 @@ plt.title('Color Magnitude Diagram of Stars')
 
 plt.show()
                                                                         
-query_result_filtered_3.to_csv('NGC188_filtered.csv', index=False)
+# query_result_filtered_3.to_csv('NGC188_filtered.csv', index=False)
 
 
+'''
