@@ -43,14 +43,15 @@ def color_magnitude_diagram(csv_files):
     plt.ylabel(r'Absolute magnitude [Gaia G-band]')
     plt.xlabel('B-R color [Gaia Bp & Rp bands]')
 
-    plt.title('Color Magnitude Diagram of Stars')
+    plt.title('Color Magnitude Diagram of Stars in the Alpha-Per, NGC 188, NGC 6774, and M44 Clusters')
 
 
     plt.legend()
     plt.show()
 
-
 print(color_magnitude_diagram(csv_files))
+
+
 
 
 
