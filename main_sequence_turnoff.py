@@ -6,11 +6,12 @@ import numpy as np
 import pandas as pd 
 
 
+
 ### PLOTTING COLOR MAGNITUDE DIAGRAM FOR ALL FOUR CLUSTERS ###
 
-csv_files = ['alpha_per_data.csv', 'NGC6774_data.csv', 'M44_data.csv']
+csv_files = ['alpha_per_data.csv', 'NGC188_data.csv', 'NGC6774_data.csv', 'M44_data.csv']
 
-print(pd.read_csv('NGC6774_data.csv'))
+# print(pd.read_csv('NGC188_data.csv'))
 def color_magnitude_diagram(csv_files):
     for file in csv_files:
         query_result = pd.read_csv(file)
@@ -49,4 +50,8 @@ def color_magnitude_diagram(csv_files):
     plt.show()
 
 
-# print(color_magnitude_diagram(csv_files))
+print(color_magnitude_diagram(csv_files))
+
+
+
+
