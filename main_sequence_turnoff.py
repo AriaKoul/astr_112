@@ -8,6 +8,10 @@ import pandas as pd
 
 ### GETTING THE DATA FROM GAIA ###
 
+# m_44 = pd.read_csv('m_44_data.csv')
+# alpha_per = pd.read_csv('alpha_per_data.csv')
+# ngc_6774 = pd.read_csv('ngc_6774_data.csv')
+
 def color_magnitude_diagram(query_result):
 
     query_result_filtered = query_result.dropna(subset=['phot_g_mean_mag'])
@@ -35,9 +39,13 @@ def color_magnitude_diagram(query_result):
     ax.set_ylabel(r'Absolute magnitude [Gaia G-band]')
     ax.set_xlabel('B-R color [Gaia Bp & Rp bands]')
 
-    plt.title('Color Magnitude Diagram of Stars in the Praesepe Cluster')
+    plt.title('Color Magnitude Diagram of Stars')
 
-    plt.show()
+color_magnitude_diagram(pd.read_csv('M44_data.csv'))
+color_magnitude_diagram(pd.read_csv('alpha_per_data.csv'))
 
-print(color_magnitude_diagram(pd.read_csv('m_44.csv')))
+plt.legend()
+plt.show()
+
+
 
