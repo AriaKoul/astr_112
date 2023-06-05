@@ -24,7 +24,7 @@ plt.title('Parallax Histogram')
 plt.show()
 
 # # Below is the code for the parallax histogram zoomed into the parallaxes that the Praesepe Cluster might correspond to
-bins_zoomed = np.arange(0.5, 0.7, 0.002) 
+bins_zoomed = np.arange(0.4, 0.7, 0.002) 
 plt.hist(parallax_signal,bins_zoomed)
 plt.xlabel('Parallax (mas)')
 plt.ylabel('Stars')
@@ -33,12 +33,12 @@ plt.show()
 # Peak of the histogram had a width from 5.28 mas to 5.64 mas: this peak was 18 bins across
 
 
-'''
+
 ### FILTERING THE DATA FOR PARALLAX ###
 
 # We want to filter the stars so that the only stars left in our data set are those that correspond to
 # the parallax range we found. So, we want stars that have a parallax between 5.28 mas and 5.54 mas.
-query_result_filtered = query_result[(query_result['parallax'] >= 5.40) & (query_result['parallax'] <= 6.01)]
+query_result_filtered = query_result[(query_result['parallax'] >= 0.5) & (query_result['parallax'] <= 0.67)]
 # After filtering the data for parallaxes, the remaining data was only 1105 stars. 
 
 
@@ -62,8 +62,8 @@ plt.show()
 
 ### FILTERING THE DATA FOR PROPER MOTION AND PLOTTING PROPER MOTION AGAIN ###
 
-query_result_filtered_2 = query_result_filtered[(query_result_filtered['pmdec'] >= -32.5) & (query_result_filtered['pmdec'] <= -18.5)
-                                                & (query_result_filtered['pmra'] >= 16.7) & (query_result_filtered['pmra'] <= 32.0)]
+query_result_filtered_2 = query_result_filtered[(query_result_filtered['pmdec'] >= -1.68) & (query_result_filtered['pmdec'] <= -0.33)
+                                                & (query_result_filtered['pmra'] >= -2.99) & (query_result_filtered['pmra'] <= -1.30)]
 
 
 
@@ -85,8 +85,8 @@ plt.show()
 
 ### PLOTTING RA vs. DEC FOR INITIAL QUERY (UNFILTERED DATA) ###
 
-condition = ((query_result['parallax'].between(5.40, 6.01)) & (query_result['pmdec'].between(-32.5, -18.5)) 
-             & (query_result['pmra'].between(16.7, 32.0)))
+condition = ((query_result['parallax'].between(0.50, 0.67)) & (query_result['pmdec'].between(-1.68, -0.33)) 
+             & (query_result['pmra'].between(-2.99, -1.30)))
 selected_points = query_result[condition]
 
 
@@ -104,8 +104,8 @@ plt.show()
 
 ### FILTERING THE DATA FOR RA AND DEC ### 
 
-query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 48.0) & (query_result_filtered_2['dec'] <= 50.6)
-                                                & (query_result_filtered_2['ra'] >= 49.5) & (query_result_filtered_2['ra'] <= 54.0)]
+query_result_filtered_3 = query_result_filtered_2[(query_result_filtered_2['dec'] >= 84.78) & (query_result_filtered_2['dec'] <= 85.8)
+                                                & (query_result_filtered_2['ra'] >= 1.0) & (query_result_filtered_2['ra'] <= 23.7)]
 
 
 ### PLOTTING COLOR MAGNITUDE DIAGRAM ###
@@ -136,7 +136,6 @@ plt.title('Color Magnitude Diagram of Stars')
 
 plt.show()
                                                                         
-# query_result_filtered_3.to_csv('alpha_per_filtered.csv', index=False)
+query_result_filtered_3.to_csv('NGC188_filtered.csv', index=False)
 
 
-'''
