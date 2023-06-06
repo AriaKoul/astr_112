@@ -12,7 +12,7 @@ import pandas as pd
 # I filtered the data and created the following csv files, so that the color magnitude diagram at 
 # the end of part (a) was less chaotic and more clear. 
 
-
+'''
 csv_files = ['alpha_per_filtered.csv', 'NGC188_filtered.csv', 'NGC6774_filtered.csv', 'M44_filtered.csv']
 
 def color_magnitude_diagram(csv_files):
@@ -53,6 +53,7 @@ def color_magnitude_diagram(csv_files):
 
 print(color_magnitude_diagram(csv_files))
 
+'''
 
 ### USING THE ISOCHRONES ###
 iso = pd.read_csv('iso.csv')
@@ -66,8 +67,43 @@ iso = pd.read_csv('iso.csv')
 iso_with_bp_rp = pd.read_csv('iso_with_bp_rp.csv')
 
 # Filtering for each specific age
-iso_filtered_1 = iso[(iso['logAge   '] == 7.50000)]
-iso_filtered_2 = iso[(iso['logAge   '] == 8.50000)]
-iso_filtered_3 = iso[(iso['logAge   '] == 9.50000)]
+iso_filtered_1 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 7.50000)]
+iso_filtered_2 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 8.50000)]
+iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)]
 
 # Plotting the Color Magnitude Diagram for these isochrones
+isochrones = [iso_filtered_1, iso_filtered_1, iso_filtered_3]
+
+def color_magnitude_diagram_iso(isochrones):
+    for isochrone in isochrones:
+
+        # Pull out the color & magnitude values from Gaia
+        app_Gmag = isochrone['Gmag']
+        bp_rp = isochrone['bp_rp']
+
+        # # Calculating distance from parallax 
+        # parallax_Signal = query_result_filtered['parallax']
+        # parallax_in_arcsec = parallax_Signal/1000 #convert from milliarcseconds to arcseconds
+        # d = 1/parallax_in_arcsec
+
+        # # Calculating absolute magnitude using distance 
+        # abs_Gmag = app_Gmag - 5*np.log10(d/10)
+
+        # # Creating the Color Magnitude Diagram plot 
+        # # fig, ax = plt.subplots(figsize=(5,5), dpi=100)
+        # # ax.scatter(bp_rp,abs_Gmag, label = file)
+
+        plt.scatter(bp_rp, app_Gmag, s = 0.5, label = 'isochrone')
+
+    # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention is to put brighter stars at the top
+    plt.ylim(16, -4)
+
+    plt.ylabel(r'Absolute magnitude [Gaia G-band]')
+    plt.xlabel('B-R color [Gaia Bp & Rp bands]')
+
+    plt.title('Color Magnitude Diagram of Three Isochrones')
+
+    plt.legend()
+    plt.show()
+
+print(color_magnitude_diagram_iso(isochrones))
