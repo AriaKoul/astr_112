@@ -57,13 +57,11 @@ print(color_magnitude_diagram(csv_files))
 
 ### USING THE ISOCHRONES ###
 iso = pd.read_csv('iso.csv')
-
 # Below is the work I used to create a new csv file with the BP - RP color included
     # bp_rp = iso['BPmag'] - iso['RPmag']
     # iso['bp_rp'] = bp_rp
     # new_csv_file_path = "iso_with_bp_rp.csv"
     # iso.to_csv(new_csv_file_path, index=False)
-
 iso_with_bp_rp = pd.read_csv('iso_with_bp_rp.csv')
 
 # Filtering for each specific age
@@ -72,7 +70,8 @@ iso_filtered_2 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 8.50000)]
 iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)]
 
 # Plotting the Color Magnitude Diagram for these isochrones
-isochrones = [iso_filtered_1, iso_filtered_1, iso_filtered_3]
+isochrones = [iso_filtered_1, iso_filtered_2, iso_filtered_3]
+# age = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 
 def color_magnitude_diagram_iso(isochrones):
     for isochrone in isochrones:
@@ -81,22 +80,13 @@ def color_magnitude_diagram_iso(isochrones):
         app_Gmag = isochrone['Gmag']
         bp_rp = isochrone['bp_rp']
 
-        # # Calculating distance from parallax 
-        # parallax_Signal = query_result_filtered['parallax']
-        # parallax_in_arcsec = parallax_Signal/1000 #convert from milliarcseconds to arcseconds
-        # d = 1/parallax_in_arcsec
+        age = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 
-        # # Calculating absolute magnitude using distance 
-        # abs_Gmag = app_Gmag - 5*np.log10(d/10)
+        plt.scatter(bp_rp, app_Gmag, s = 0.5, label = '')
 
-        # # Creating the Color Magnitude Diagram plot 
-        # # fig, ax = plt.subplots(figsize=(5,5), dpi=100)
-        # # ax.scatter(bp_rp,abs_Gmag, label = file)
-
-        plt.scatter(bp_rp, app_Gmag, s = 0.5, label = 'isochrone')
-
-    # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention is to put brighter stars at the top
-    plt.ylim(16, -4)
+    # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention 
+    # is to put brighter stars at the top
+    plt.ylim(25, -10)
 
     plt.ylabel(r'Absolute magnitude [Gaia G-band]')
     plt.xlabel('B-R color [Gaia Bp & Rp bands]')
