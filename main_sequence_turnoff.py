@@ -71,25 +71,23 @@ iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)]
 
 # Plotting the Color Magnitude Diagram for these isochrones
 isochrones = [iso_filtered_1, iso_filtered_2, iso_filtered_3]
-# age = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 
+names = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 def color_magnitude_diagram_iso(isochrones):
-    for isochrone in isochrones:
+    for i in isochrones:
 
         # Pull out the color & magnitude values from Gaia
-        app_Gmag = isochrone['Gmag']
-        bp_rp = isochrone['bp_rp']
+        app_Gmag = i['Gmag']
+        bp_rp = i['bp_rp']
 
-        age = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
-
-        plt.scatter(bp_rp, app_Gmag, s = 0.5, label = '')
+        plt.scatter(bp_rp, app_Gmag, s = 0.7, label = 'hi'])
 
     # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention 
     # is to put brighter stars at the top
     plt.ylim(25, -10)
 
-    plt.ylabel(r'Absolute magnitude [Gaia G-band]')
-    plt.xlabel('B-R color [Gaia Bp & Rp bands]')
+    plt.ylabel('G magnitude')
+    plt.xlabel('BP-RP color')
 
     plt.title('Color Magnitude Diagram of Three Isochrones')
 
