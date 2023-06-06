@@ -54,13 +54,38 @@ def color_magnitude_diagram(csv_files):
 print(color_magnitude_diagram(csv_files))
 '''
 
-file_path = "iso.txt"
+# file_path = "iso.txt"
 
 # Read the text file using Pandas
-isochrones = pd.read_csv(file_path, delimiter='\t')  # Use appropriate delimiter if not comma-separated
+# isochrones = pd.read_csv(file_path, delimiter='\t')  # Use appropriate delimiter if not comma-separated
 
+# print(isochrones['12.7960'])
+# print(isochrones.iloc[:, 2])
+
+
+# text_file_path = "iso.txt"
+# csv_file_path = "isochrones.csv"
+
+# # Read the text file using Pandas
+# isochrones = pd.read_csv(text_file_path, delimiter='\t')  # Use appropriate delimiter if not tab-separated
+
+# # Save the DataFrame as a CSV file
+# isochrones.to_csv(csv_file_path, index=False)  # Set index=False to exclude row numbers as a column
+
+isochrones = pd.read_csv('isochrones.csv', header=None, names=['Column'])
+
+# print(isochrones)
+
+
+
+isochrones['#'] = isochrones['Column'].str.extract(r'(#)')
+isochrones['logAge'] = isochrones['Column'].str.extract(r'(logAge)')
+isochrones['Mass'] = isochrones['Column'].str.extract(r'(Mass)')
+isochrones['Gmag'] = isochrones['Column'].str.extract(r'(Gmag)')
+isochrones['BPmag'] = isochrones['Column'].str.extract(r'(BPmag)')
+isochrones['RPmag'] = isochrones['Column'].str.extract(r'(RPmag)')
+
+
+# Print the modified DataFrame
 print(isochrones)
-
-
-
-
+print(isochrones['Mass'])
