@@ -54,45 +54,5 @@ def color_magnitude_diagram(csv_files):
 print(color_magnitude_diagram(csv_files))
 '''
 
-isochrones = pd.read_csv('isochrones.csv', header=None, names=['Column'])
-
+isochrones = pd.read_csv('iso.csv')
 print(isochrones)
-
-
-
-'''
-# Extract numbers using regular expressions
-isochrones['Column'] = isochrones['Column'].astype(float)
-
-# Define the headers and extract numbers after each header
-pattern = r'(?P<logAge>logAge\s+[\d.]+)\s+(?P<Mass>Mass\s+[\d.]+)\s+(?P<Gmag>Gmag\s+[\d.]+)'
-isochrones[['logAge', 'Mass', 'Gmag']] = isochrones['Column'].str.extract(pattern, expand=True)
-
-# Convert the float values to numeric data type
-isochrones['logAge'] = pd.to_numeric(isochrones['logAge'].str.split().str[-1])
-isochrones['Mass'] = pd.to_numeric(isochrones['Mass'].str.split().str[-1])
-isochrones['Gmag'] = pd.to_numeric(isochrones['Gmag'].str.split().str[-1])
-isochrones['BPmag'] = pd.to_numeric(isochrones['BPmag'].str.split().str[-1])
-isochrones['RPmag'] = pd.to_numeric(isochrones['RPmag'].str.split().str[-1])
-
-
-
-# Print the resulting DataFrame
-print(isochrones)
-'''
-
-
-
-'''
-isochrones['#'] = isochrones['Column'].str.extract(r'(#)')
-isochrones['logAge'] = isochrones['Column'].str.extract(r'(logAge)')
-isochrones['Mass'] = isochrones['Column'].str.extract(r'(Mass)')
-isochrones['Gmag'] = isochrones['Column'].str.extract(r'(Gmag)')
-isochrones['BPmag'] = isochrones['Column'].str.extract(r'(BPmag)')
-isochrones['RPmag'] = isochrones['Column'].str.extract(r'(RPmag)')
-
-
-# Print the modified DataFrame
-print(isochrones)
-print(isochrones['Mass'])
-'''
