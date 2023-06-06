@@ -54,30 +54,36 @@ def color_magnitude_diagram(csv_files):
 print(color_magnitude_diagram(csv_files))
 '''
 
-# file_path = "iso.txt"
-
-# Read the text file using Pandas
-# isochrones = pd.read_csv(file_path, delimiter='\t')  # Use appropriate delimiter if not comma-separated
-
-# print(isochrones['12.7960'])
-# print(isochrones.iloc[:, 2])
-
-
-# text_file_path = "iso.txt"
-# csv_file_path = "isochrones.csv"
-
-# # Read the text file using Pandas
-# isochrones = pd.read_csv(text_file_path, delimiter='\t')  # Use appropriate delimiter if not tab-separated
-
-# # Save the DataFrame as a CSV file
-# isochrones.to_csv(csv_file_path, index=False)  # Set index=False to exclude row numbers as a column
-
 isochrones = pd.read_csv('isochrones.csv', header=None, names=['Column'])
 
-# print(isochrones)
+print(isochrones)
 
 
 
+'''
+# Extract numbers using regular expressions
+isochrones['Column'] = isochrones['Column'].astype(float)
+
+# Define the headers and extract numbers after each header
+pattern = r'(?P<logAge>logAge\s+[\d.]+)\s+(?P<Mass>Mass\s+[\d.]+)\s+(?P<Gmag>Gmag\s+[\d.]+)'
+isochrones[['logAge', 'Mass', 'Gmag']] = isochrones['Column'].str.extract(pattern, expand=True)
+
+# Convert the float values to numeric data type
+isochrones['logAge'] = pd.to_numeric(isochrones['logAge'].str.split().str[-1])
+isochrones['Mass'] = pd.to_numeric(isochrones['Mass'].str.split().str[-1])
+isochrones['Gmag'] = pd.to_numeric(isochrones['Gmag'].str.split().str[-1])
+isochrones['BPmag'] = pd.to_numeric(isochrones['BPmag'].str.split().str[-1])
+isochrones['RPmag'] = pd.to_numeric(isochrones['RPmag'].str.split().str[-1])
+
+
+
+# Print the resulting DataFrame
+print(isochrones)
+'''
+
+
+
+'''
 isochrones['#'] = isochrones['Column'].str.extract(r'(#)')
 isochrones['logAge'] = isochrones['Column'].str.extract(r'(logAge)')
 isochrones['Mass'] = isochrones['Column'].str.extract(r'(Mass)')
@@ -89,3 +95,4 @@ isochrones['RPmag'] = isochrones['Column'].str.extract(r'(RPmag)')
 # Print the modified DataFrame
 print(isochrones)
 print(isochrones['Mass'])
+'''
