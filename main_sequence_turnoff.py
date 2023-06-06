@@ -12,7 +12,7 @@ import pandas as pd
 # I filtered the data and created the following csv files, so that the color magnitude diagram at 
 # the end of part (a) was less chaotic and more clear. 
 
-'''
+
 csv_files = ['alpha_per_filtered.csv', 'NGC188_filtered.csv', 'NGC6774_filtered.csv', 'M44_filtered.csv']
 
 def color_magnitude_diagram(csv_files):
@@ -52,7 +52,22 @@ def color_magnitude_diagram(csv_files):
     plt.show()
 
 print(color_magnitude_diagram(csv_files))
-'''
 
-isochrones = pd.read_csv('iso.csv')
-print(isochrones)
+
+### USING THE ISOCHRONES ###
+iso = pd.read_csv('iso.csv')
+
+# Below is the work I used to create a new csv file with the BP - RP color included
+    # bp_rp = iso['BPmag'] - iso['RPmag']
+    # iso['bp_rp'] = bp_rp
+    # new_csv_file_path = "iso_with_bp_rp.csv"
+    # iso.to_csv(new_csv_file_path, index=False)
+
+iso_with_bp_rp = pd.read_csv('iso_with_bp_rp.csv')
+
+# Filtering for each specific age
+iso_filtered_1 = iso[(iso['logAge   '] == 7.50000)]
+iso_filtered_2 = iso[(iso['logAge   '] == 8.50000)]
+iso_filtered_3 = iso[(iso['logAge   '] == 9.50000)]
+
+# Plotting the Color Magnitude Diagram for these isochrones
