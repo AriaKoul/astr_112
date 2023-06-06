@@ -74,13 +74,26 @@ isochrones = [iso_filtered_1, iso_filtered_2, iso_filtered_3]
 
 names = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 def color_magnitude_diagram_iso(isochrones):
-    for i in isochrones:
+    for i in range(len(isochrones)):
 
         # Pull out the color & magnitude values from Gaia
-        app_Gmag = i['Gmag']
-        bp_rp = i['bp_rp']
+        app_Gmag = isochrones[i]['Gmag']
+        bp_rp = isochrones[i]['bp_rp']
+        label = ''
+        if (isochrones[i] == iso_filtered_1).any().any():
+            # label = 'logAge = 7.5'
+            plt.scatter(bp_rp, app_Gmag, s = 0.7, label = names[i])
 
-        plt.scatter(bp_rp, app_Gmag, s = 0.7, label = 'hi'])
+        if (isochrones[i] == iso_filtered_2).any().any():
+            # label = 'logAge = 8.5'
+            plt.scatter(bp_rp, app_Gmag, s = 0.7, label = names[i])
+
+        if (isochrones[i] == iso_filtered_3).any().any():
+            # label = 'logAge = 9.5'
+            plt.scatter(bp_rp, app_Gmag, s = 0.7, label = names[i])
+
+
+        # plt.scatter(bp_rp, app_Gmag, s = 0.7)
 
     # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention 
     # is to put brighter stars at the top
