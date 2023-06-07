@@ -10,7 +10,8 @@ import pandas as pd
 ### PLOTTING COLOR MAGNITUDE DIAGRAM FOR ALL FOUR CLUSTERS ###
 
 # I filtered the data and created the following csv files, so that the color magnitude diagram at 
-# the end of part (a) was less chaotic and more clear. 
+# the end of part (a) was less chaotic and more clear. For the filtering process, I used the same
+# code as from the assignment from Homework 4, for the Praesepe/M44 Cluster.
 
 csv_files = ['alpha_per_filtered.csv', 'NGC188_filtered.csv', 'NGC6774_filtered.csv', 'M44_filtered.csv']
 names = ['Alpha Persei, NGC 188, NGC 6774, M44']
@@ -63,15 +64,15 @@ iso = pd.read_csv('iso.csv')
 iso_with_bp_rp = pd.read_csv('iso_with_bp_rp.csv')
 
 # Filtering for each specific age
-iso_filtered_1 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 7.50000)]
-iso_filtered_2 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 8.50000)]
-iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)]
+iso_filtered_1 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 7.50000)] # for the isochrone with an age of 10**7.5 years
+iso_filtered_2 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 8.50000)] # for the isochrone with an age of 10**8.5 years
+iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)] # for the isochrone with an age of 10**9.5 years 
 
 
-# Plotting the Color Magnitude Diagram for these isochrones
+# Plotting the Color Magnitude Diagram for these isochrones (all on the same plot)
 isochrones = [iso_filtered_1, iso_filtered_2, iso_filtered_3]
-
 iso_names = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
+
 def color_magnitude_diagram_iso(isochrones):
     for i in range(len(isochrones)):
 
@@ -97,15 +98,10 @@ def color_magnitude_diagram_iso(isochrones):
 
 print(color_magnitude_diagram_iso(isochrones))
 
-# number = iso_filtered_2['logAge   '][0]
-# print(number)
-
 
 ### CREATING A FUNCTION FOR EACH CLUSTER AND ITS FIT ###
 def cluster_fit(cluster, isochrone):
     cluster_csv = pd.read_csv(cluster)
-    # query_result_filtered = query_result.dropna(subset=['phot_g_mean_mag'])
-    # query_result_filtered = query_result.dropna(subset=['bp_rp'])
 
     # Pull out the color & magnitude values from the cluster and from the corresponding isochrone
     app_Gmag_cluster = cluster_csv['phot_g_mean_mag']
@@ -138,18 +134,23 @@ def cluster_fit(cluster, isochrone):
     plt.show()
 
 
+
 ### PLOTTING ALPHA PERSEI WITH ITS BEST FIT ISOCHRONE ###
+# I found that the Alpha Persei Cluster is best fit by the isochrone of age 10**7.5 years
 print(cluster_fit('alpha_per_filtered.csv', iso_filtered_1))
 
 
 ### PLOTTING NGC 188 WITH ITS BEST FIT ISOCHRONE ###
-print(cluster_fit('NGC188_filtered.csv', iso_filtered_2))
+# I found that the NGC 188 Cluster is best fit by the isochrone of age 10**9.5 years
+print(cluster_fit('NGC188_filtered.csv', iso_filtered_3))
 
 
 ### PLOTTING NGC 6774 WITH ITS BEST FIT ISOCHRONE ###
-
+# I found that the NGC 6774 Cluster is best fit by the isochrone of age 10**9.5 years
+print(cluster_fit('NGC6774_filtered.csv', iso_filtered_3))
 
 
 ### PLOTTING M 44 WITH ITS BEST FIT ISOCHRONE ###
-print(cluster_fit('M44_filtered.csv', iso_filtered_1))
+# I found that the M 44 Cluster is best fit by the isochrone of age 10**8.5 years 
+print(cluster_fit('M44_filtered.csv', iso_filtered_2))
 
