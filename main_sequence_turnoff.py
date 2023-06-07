@@ -67,6 +67,7 @@ iso_filtered_1 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 7.50000)]
 iso_filtered_2 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 8.50000)]
 iso_filtered_3 = iso_with_bp_rp[(iso_with_bp_rp['logAge   '] == 9.50000)]
 
+
 # Plotting the Color Magnitude Diagram for these isochrones
 isochrones = [iso_filtered_1, iso_filtered_2, iso_filtered_3]
 
@@ -96,6 +97,9 @@ def color_magnitude_diagram_iso(isochrones):
 
 print(color_magnitude_diagram_iso(isochrones))
 
+# number = iso_filtered_2['logAge   '][0]
+# print(number)
+
 
 ### CREATING A FUNCTION FOR EACH CLUSTER AND ITS FIT ###
 def cluster_fit(cluster, isochrone):
@@ -119,16 +123,16 @@ def cluster_fit(cluster, isochrone):
     abs_Gmag_cluster = app_Gmag_cluster - 5*np.log10(d/10)
 
     # Creating the Color Magnitude Diagram plot
-    plt.scatter(bp_rp_cluster, abs_Gmag_cluster, s = 0.5, label = cluster)
-    plt.scatter(bp_rp_iso, app_Gmag_iso, s = 0.7, label = 'isochrone')
+    plt.scatter(bp_rp_cluster, abs_Gmag_cluster, s = 0.5, label = cluster.split('_filtered.csv')[0])
+    plt.scatter(bp_rp_iso, app_Gmag_iso, s = 0.7, label = f"Isochrone (logAge = {isochrone['logAge   '][0]})")
 
     # The y axis is reversed because smaller magnitude values mean brighter stars,and the convention is to put brighter stars at the top
     plt.ylim(16, -4)
 
-    plt.ylabel(r'Absolute magnitude [Gaia G-band]')
-    plt.xlabel('B-R color [Gaia Bp & Rp bands]')
+    plt.ylabel('G Magnitude')
+    plt.xlabel('BP-RP color')
 
-    plt.title('Color Magnitude Diagram of Stars in the Alpha-Per, NGC 188, NGC 6774, and M44 Clusters')
+    plt.title(f"Color Magnitude Diagram of {cluster.split('_filtered.csv')[0]} and the Isochrone with logAge = {isochrone['logAge   '][0]}")
 
     plt.legend()
     plt.show()
@@ -139,7 +143,7 @@ print(cluster_fit('alpha_per_filtered.csv', iso_filtered_1))
 
 
 ### PLOTTING NGC 188 WITH ITS BEST FIT ISOCHRONE ###
-
+print(cluster_fit('NGC188_filtered.csv', iso_filtered_2))
 
 
 ### PLOTTING NGC 6774 WITH ITS BEST FIT ISOCHRONE ###
@@ -147,5 +151,5 @@ print(cluster_fit('alpha_per_filtered.csv', iso_filtered_1))
 
 
 ### PLOTTING M 44 WITH ITS BEST FIT ISOCHRONE ###
-
+print(cluster_fit('M44_filtered.csv', iso_filtered_1))
 
