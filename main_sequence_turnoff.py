@@ -76,7 +76,7 @@ iso_names = ['logAge = 7.5', 'logAge = 8.5', 'logAge = 9.5']
 def color_magnitude_diagram_iso(isochrones):
     for i in range(len(isochrones)):
 
-        # Pull out the color & magnitude values from Gaia
+        # Pull out the color & magnitude values from the isochrone csv file
         app_Gmag = isochrones[i]['Gmag']
         bp_rp = isochrones[i]['bp_rp']
 
