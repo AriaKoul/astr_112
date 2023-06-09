@@ -1,4 +1,35 @@
 
+"""
+DESCRIPTION:
+In this assignment, I am analyzing the four following cluster: Alpha Persei, NGC 188, NGC 6774, and M44. 
+From the Gaia Catalog, I used specific parameters to get data on a bunch of stars that were part of each
+cluster and part of the vicinity of each cluster. 
+
+For each cluster, I used a radius of 2 degrees, made the flux S/N ratios above 5, made the parallax be 
+greater than 0.5 mas, and made the parallax S/N ratio above 5. 
+
+Below are the outputs I needed for each star to analyze the data.
+    - Source ID
+    - Parallax
+    - Right Ascension (RA)
+    - Declination (DEC)
+    - Proper Motion in RA (pmra)
+    - Proper Motion in DEC (pmdec)
+    - Mean G Magnitude
+    - BP-RP Color  
+
+After finding the data for each cluster using the Gaia Catalog, I filtered each of them using the same
+methods as from analyzing_praesepe.py. I filtered for parallax, proper motion in RA and DEC, and for RA
+and DEC coordinates. I then made each of the filtered data sets into new csv files to use in this python
+program. I created a Color Magnitude Diagram for each of the star clusters and plotted them on the same plot.
+
+I then plotted a CMD of three isochrones. An isochrone is a curve on the HR diagram that represents 
+a group of stars all of the same age but different masses. 
+
+Finally, I compared the clusters' CMD and the isochrones' CMD and found the best fit isochrone for each cluster.
+With this information, I was able to find the rough age of each cluster I was analyzing. 
+
+"""
 
 ### IMPORTS ###
 import matplotlib.pyplot as plt
