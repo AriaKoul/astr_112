@@ -29,6 +29,8 @@ This helped me filter the stars in the initial Gaia query so that, in the end, t
 in the data set were those from the Praesepe Cluster. At the end of this assignment, I made a Color
 Magnitude Diagram to represent the stars in the cluster. 
 
+NOTE: Thank you to Thummim Merkuria for their help with the code.
+
 
 """
 
