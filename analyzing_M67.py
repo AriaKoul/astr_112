@@ -23,6 +23,8 @@ code. With the data, I made a histogram of the parallaxes. This helped me find t
 approximate parallax, and thus the approximate distances, of the stars in M67. I also made a 
 Color Magnitude Diagram to represent the stars that are in M67. 
 
+NOTE: Thank you to Thummim Merkuria for their help with the code. 
+
 """
 
 ### IMPORTS ###

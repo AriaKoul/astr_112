@@ -29,6 +29,8 @@ a group of stars all of the same age but different masses.
 Finally, I compared the clusters' CMD and the isochrones' CMD and found the best fit isochrone for each cluster.
 With this information, I was able to find the rough age of each cluster I was analyzing. 
 
+NOTE: Thank you to Thummim Merkuria for their help with the code.
+
 """
 
 ### IMPORTS ###
