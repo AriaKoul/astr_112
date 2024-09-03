@@ -32,5 +32,5 @@ Clone this repository using the following code:
 
 `$ git clone https://github.com/AriaKoul/astr_112`
 
-Run `python _filename_`. In place of _filename_, write any of the five python files you want to run. 
+Run `python filename`. In place of _filename_, write any of the five python files you want to run. 
 
