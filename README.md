@@ -4,7 +4,7 @@ This repository contains all the code for the assignments I did for ASTR 112, Ph
 
 The work in this repository includes analyzing the Gaia Catalog, which is a catalog that contains characteristics, such as distance, luminosities, and location, of more than a billion stars in the night sky. I downloaded star data from the [Gaia Esa Archive](https://gea.esac.esa.int/archive/) and converted it into csv files, which I then filtered based on given baselines. The data is in the "Data Files" folder. Using the filtered data, I developed python programs to create color magnitude diagrams (CMDs) and Hertzsprung Russel (HR) Diagrams that represent various stars' properties. 
 
-## How to Use 
+## Dependencies
 
 ## File Descriptions
 `using_gaia_dr2.py`: This script creates a HR Diagram and a CMD of stars that fit certain parameters (which are stated in the file). Necessary files to run this code: 
@@ -27,5 +27,10 @@ The work in this repository includes analyzing the Gaia Catalog, which is a cata
 * `iso_with_bp_rp.csv`
 
 
-## Dependencies
+## How to Use
+Clone this repository using the following code:
+
+`$ git clone https://github.com/AriaKoul/astr_112`
+
+Run `python _filename_`. In place of _filename_, write any of the five python files you want to run. 
 
