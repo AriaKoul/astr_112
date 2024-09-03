@@ -15,7 +15,8 @@ The work in this repository includes analyzing the Gaia Catalog, which is a cata
 `analyzing_M67.py`: This script creates a CMD of stars in the M67 star clusters. Necessary files to run this code: 
 * `M67_data.csv`
 
-`analyzing_praesepe.py`: 
+`analyzing_praesepe.py`: This script creates a CMD of stars in the M44 star cluster which is also known as the Praesepe Cluster. Necessary files to run this code:
+* `praesepe_data.csv`
 
 `main_sequence_turnoff.py`: In this script, I analyzed four different star clusters: Alpha Persei, NGC 188, NGC 6774, and M44. I created CMDs for each star cluster, then compared them with CMDs of three given isochrones, which are curves on the HR diagram that represent a group of stars all of the same age but different masses. Using the comparison, I was able to find the approximate age of the four star clusters I was working with. Necessary files to run this code: 
 * `alpha_per_filtered.csv`
