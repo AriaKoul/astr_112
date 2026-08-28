@@ -42,7 +42,7 @@ query_result = pd.read_csv('M67_data.csv') # Outputted 5546 stars
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
 parallax_signal = query_result['parallax']
 max_parallax = np.max(parallax_signal) # determines what the largest parallax value is in order to define the bins
-print(max_parallax) # found to be 22.04
+print(f"Maximum parallax: {max_parallax}") # found to be 22.04
 
 bins = np.arange(0.5,8,0.10) #define bins with the first one at SNR=10 & going up to 4000 in steps of 50
 plt.hist(parallax_signal,bins)
