@@ -48,7 +48,7 @@ query_result = pd.read_csv('praesepe_data.csv') # Outputted 141627 stars (using 
 ### CREATING A HISTOGRAM FOR THE PARALLAXES ###
 parallax_signal = query_result['parallax']
 max_parallax = np.max(parallax_signal) # determines what the largest parallax value is in order to define the bins
-print(max_parallax) # max parallax was 92.22 mas 
+print(f"Maximum parallax: {max_parallax}") # max parallax was 92.22 mas 
 
 # Below is the code for the entire parallax histogram
 bins = np.arange(0, 8, 0.05) 
